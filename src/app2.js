@@ -33,9 +33,9 @@ async function app (yargsInput){
     const myUpdate ={$set: { tvactor: yargsInput.tvactor}};
     const result = await TvCollection.updateOne(myQuery,myUpdate); // finds the title and updates the details using the objects myquery & myupdate
     if (result.modifiedCount === 1) {
-        console.log ("updated Actor Successful");
+        console.log ("Updated Actor Successfully");
       } else {
-        console.log ("update Failed!");
+        console.log ("Update Failed!");
       }
 
   } else if (yargsInput.updateDirector) {
@@ -45,9 +45,9 @@ async function app (yargsInput){
     const myUpdate ={$set: { tvdirector: yargsInput.tvdirector}};
     const result = await TvCollection.updateOne(myQuery,myUpdate); // finds the title and updates the details using the objects myquery & myupdate
     if (result.modifiedCount === 1) {
-        console.log ("updated Director Successful");
+        console.log ("Updated Director Successfully");
     } else {
-        console.log ("update Failed!");
+        console.log ("Update Failed!");
     }  
     
   } else if (yargsInput.updateRating) {
@@ -57,9 +57,9 @@ async function app (yargsInput){
     const myUpdate ={$set: { tvrating: yargsInput.tvrating}};
     const result = await TvCollection.updateOne(myQuery,myUpdate); // finds the title and updates the details using the objects myquery & myupdate
     if (result.modifiedCount === 1) {
-        console.log ("updated Rating Successful");
+        console.log ("Updated Rating Successfully");
     } else {
-        console.log ("update Failed!");
+        console.log ("Update Failed!");
     }   
 
   // } else if (yargsInput.search) {

@@ -33,9 +33,9 @@ async function app (yargsInput){
     const myUpdate ={$set: { actor: yargsInput.actor}};
     const result = await MovieCollection.updateOne(myQuery,myUpdate); // finds the title and updates the details using the objects myquery & myupdate
     if (result.modifiedCount === 1) {
-        console.log ("updated Actor Successful");
+        console.log ("Updated Actor Successfully");
       } else {
-        console.log ("update Failed!");
+        console.log ("Update Failed!");
       }
 
   } else if (yargsInput.updateDirector) {
@@ -45,9 +45,9 @@ async function app (yargsInput){
     const myUpdate ={$set: { director: yargsInput.director}};
     const result = await MovieCollection.updateOne(myQuery,myUpdate); // finds the title and updates the details using the objects myquery & myupdate
     if (result.modifiedCount === 1) {
-        console.log ("updated Director Successful");
+        console.log ("Updated Director Successfully");
     } else {
-        console.log ("update Failed!");
+        console.log ("Update Failed!");
     }  
     
   } else if (yargsInput.updateRating) {
@@ -57,9 +57,9 @@ async function app (yargsInput){
     const myUpdate ={$set: { rating: yargsInput.rating}};
     const result = await MovieCollection.updateOne(myQuery,myUpdate); // finds the title and updates the details using the objects myquery & myupdate
     if (result.modifiedCount === 1) {
-        console.log ("updated Rating Successful");
+        console.log ("Updated Rating Successfully");
     } else {
-        console.log ("update Failed!");
+        console.log ("Update Failed!");
     }   
 
   } else if (yargsInput.delete) {
@@ -71,10 +71,10 @@ async function app (yargsInput){
     if (result.deletedCount === 1 ) {
         console.log ("Movie Successfully Deleted");
     } else {
-        console.log ("Movie NOT Deleted");
+        console.log ("Movie NOT Deleted!");
     }
   } else {
-    console.log("Command not recognised");
+    console.log("Command not recognised!");
   };
   await mongoose.disconnect();
 };
