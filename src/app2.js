@@ -68,7 +68,11 @@ async function app (yargsInput){
   //   const results = await TvCollection.find({}); 
   //     for (let index = 0; index < results.length; index++) {
   //       const element = results[index];
-  //       console.log(`The TV Show "${element.tvshow}" With "${element.tvactor}" Directed by "${element.tvdirector}" Rating ${element.tvrating}`);
+  //           if (yargsInput.search) = element {
+  //             console.log(`Found The TV Show "${element.tvshow}" With "${element.tvactor}" Directed by "${element.tvdirector}" Rating ${element.tvrating}`);
+  //           } else {
+  //             console.log("Nothing Found");
+  //           };          
   //     }  
 
   } else if (yargsInput.delete) {
