@@ -51,7 +51,7 @@ async function app (yargsInput){
     }  
     
   } else if (yargsInput.updateRating) {
-    // code to update the Rating only in a movie use updateOne
+    // code to update the TvShow Rating only in a movie use updateOne
     console.log("Entering Rating Update");
     const myQuery = {tvshow: yargsInput.tvshow};
     const myUpdate = {$set: { tvrating: yargsInput.tvrating}};
@@ -65,14 +65,13 @@ async function app (yargsInput){
   } else if (yargsInput.search) {
     // code to search for tvshow details
     console.log("Entering Search");
-    // const results = await TvCollection.find({tvshow: yargsInput.tvshow});
     const results = await TvCollection.find({[yargsInput.key]:{$regex: yargsInput.filter}})
       for (let index = 0; index < results.length; index++) {
         const element = results[index];
             // if (element.tvshow === yargsInput.tvshow) {
               console.log(`Found The TV Show "${element.tvshow}" With "${element.tvactor}" Directed by "${element.tvdirector}" Rating ${element.tvrating}`);
             // } else {
-            //   console.log("Nothing Found");
+            //   console.log("Something Wrong");
             // };          
        }  
 

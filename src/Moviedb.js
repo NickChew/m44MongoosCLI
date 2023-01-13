@@ -27,7 +27,7 @@ async function app (yargsInput){
       //   );
 
   } else if (yargsInput.updateActor) {
-    // code to update Actor goes here
+    // code to update Movie Actor goes here
     console.log("Entering Actor Update");
     const myQuery = {title: yargsInput.title};
     const myUpdate ={$set: { actor: yargsInput.actor}};
@@ -39,7 +39,7 @@ async function app (yargsInput){
       }
 
   } else if (yargsInput.updateDirector) {
-    // code to update the Director only in a movie use updateOne
+    // code to update the Movie Director only in a movie use updateOne
     console.log("Entering Director Update");
     const myQuery = {title: yargsInput.title};
     const myUpdate ={$set: { director: yargsInput.director}};
@@ -51,7 +51,7 @@ async function app (yargsInput){
     }  
     
   } else if (yargsInput.updateRating) {
-    // code to update the Rating only in a movie use updateOne
+    // code to update the Movie Rating only in a movie use updateOne
     console.log("Entering Rating Update");
     const myQuery = {title: yargsInput.title};
     const myUpdate ={$set: { rating: yargsInput.rating}};
@@ -65,15 +65,13 @@ async function app (yargsInput){
   } else if (yargsInput.search) {
     // code to search for Movie details
     console.log("Entering Search");
-    // const results = await MovieCollection.find({title: yargsInput.title});
     const results = await MovieCollection.find({[yargsInput.key]:{$regex: yargsInput.filter}})
-    // console.log(results);
       for (let index = 0; index < results.length; index++) {
         const element = results[index];
             // if (element.title === yargsInput.filter) {
               console.log(`Found The Movie "${element.title}" With "${element.actor}" Directed by "${element.director}" Rating ${element.rating}`);
             // } else {
-            //   console.log("Nothing Found");
+            //   console.log("Something Wrong!");
             // };          
        } 
 
