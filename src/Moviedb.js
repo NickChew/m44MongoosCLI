@@ -79,14 +79,14 @@ async function app (yargsInput){
     // code to search for Movie details
     console.log("Entering Search");
     const results = await MovieCollection.find({[yargsInput.key]:{$regex: yargsInput.filter}})
-      for (let index = 0; index < results.length; index++) {
-        const element = results[index];
-        // if (element.title === yargsInput.filter) {
-        console.log(`Found The Movie "${element.title}" With "${element.actor}" Directed by "${element.director}" Rating ${element.rating}`);
-        // } else {
-        //   console.log("Something Wrong!");
-        // };          
-      } 
+    for (let index = 0; index < results.length; index++) {
+      const element = results[index];
+    // if (element.title === yargsInput.filter) {
+      console.log(`Found The Movie "${element.title}" With "${element.actor}" Directed by "${element.director}" Rating ${element.rating}`);
+    // } else {
+    //   console.log("Something Wrong!");
+    // };          
+    } 
 
   } else if (yargsInput.delete) {
     // code to delete a movie will go here using deleteOne

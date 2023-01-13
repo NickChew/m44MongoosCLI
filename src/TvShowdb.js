@@ -79,14 +79,14 @@ async function app (yargsInput){
     // code to search for tvshow details
     console.log("Entering Search");
     const results = await TvCollection.find({[yargsInput.key]:{$regex: yargsInput.filter}})
-      for (let index = 0; index < results.length; index++) {
-        const element = results[index];
-        // if ((element.yargsInput.key === yargsInput.key) && (element.yargsInput.filter === yargsInput.filter)) {
-        console.log(`Found The TV Show "${element.tvshow}" With "${element.tvactor}" Directed by "${element.tvdirector}" Rating ${element.tvrating}`);
-        // } else {
-        //   console.log("Search Details not found in Database");
-        // };          
-      }  
+    for (let index = 0; index < results.length; index++) {
+      const element = results[index];
+    // if ((element.yargsInput.key === yargsInput.key) && (element.yargsInput.filter === yargsInput.filter)) {
+      console.log(`Found The TV Show "${element.tvshow}" With "${element.tvactor}" Directed by "${element.tvdirector}" Rating ${element.tvrating}`);
+    // } else {
+    //   console.log("Search Details not found in Database");
+    // };          
+    }  
 
   } else if (yargsInput.delete) {
     // code to delete a movie will go here using deleteOne
