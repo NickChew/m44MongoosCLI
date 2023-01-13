@@ -63,7 +63,7 @@ async function app (yargsInput){
     }   
 
   } else if (yargsInput.search) {
-    // code to search for tvshow 
+    // code to search for tvshow details
     console.log("Entering Search");
     // const results = await TvCollection.find({tvshow: yargsInput.tvshow});
     const results = await TvCollection.find({[yargsInput.key]:{$regex: yargsInput.filter}})
