@@ -20,7 +20,5 @@ const tvModel = new mongoose.Schema ({
     default: "00"
   }
 });
-// },{typeKey: "$type"});
-
 const TvCollection = mongoose.model("Mongoose TV Shows", tvModel);
 module.exports = TvCollection;
