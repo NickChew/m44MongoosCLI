@@ -54,7 +54,7 @@ async function app (yargsInput){
     // code to update the Rating only in a movie use updateOne
     console.log("Entering Rating Update");
     const myQuery = {tvshow: yargsInput.tvshow};
-    const myUpdate ={$set: { tvrating: yargsInput.tvrating}};
+    const myUpdate = {$set: { tvrating: yargsInput.tvrating}};
     const result = await TvCollection.updateOne(myQuery,myUpdate); // finds the title and updates the details using the objects myquery & myupdate
     if (result.modifiedCount === 1) {
         console.log ("Updated Rating Successfully");
@@ -62,18 +62,19 @@ async function app (yargsInput){
         console.log ("Update Failed!");
     }   
 
-  // } else if (yargsInput.search) {
-  //   // code to search for tvshow 
-  //   console.log("Entering Search");
-  //   const results = await TvCollection.find({}); 
-  //     for (let index = 0; index < results.length; index++) {
-  //       const element = results[index];
-  //           if (yargsInput.search) = element {
-  //             console.log(`Found The TV Show "${element.tvshow}" With "${element.tvactor}" Directed by "${element.tvdirector}" Rating ${element.tvrating}`);
-  //           } else {
-  //             console.log("Nothing Found");
-  //           };          
-  //     }  
+  } else if (yargsInput.search) {
+    // code to search for tvshow 
+    console.log("Entering Search");
+    // const results = await TvCollection.find({tvshow: yargsInput.tvshow});
+    const results = await TvCollection.find({[yargsInput.key]:{$regex: yargsInput.filter}})
+      for (let index = 0; index < results.length; index++) {
+        const element = results[index];
+            // if (element.tvshow === yargsInput.tvshow) {
+              console.log(`Found The TV Show "${element.tvshow}" With "${element.tvactor}" Directed by "${element.tvdirector}" Rating ${element.tvrating}`);
+            // } else {
+            //   console.log("Nothing Found");
+            // };          
+       }  
 
   } else if (yargsInput.delete) {
     // code to delete a movie will go here using deleteOne
