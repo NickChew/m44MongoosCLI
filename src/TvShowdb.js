@@ -81,10 +81,10 @@ async function app (yargsInput){
     const results = await TvCollection.find({[yargsInput.key]:{$regex: yargsInput.filter}})
       for (let index = 0; index < results.length; index++) {
         const element = results[index];
-        // if (element.tvshow === yargsInput.tvshow) {
+        // if ((element.yargsInput.key === yargsInput.key) && (element.yargsInput.filter === yargsInput.filter)) {
         console.log(`Found The TV Show "${element.tvshow}" With "${element.tvactor}" Directed by "${element.tvdirector}" Rating ${element.tvrating}`);
         // } else {
-        //   console.log("Something Wrong");
+        //   console.log("Search Details not found in Database");
         // };          
       }  
 
