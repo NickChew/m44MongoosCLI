@@ -17,11 +17,11 @@ async function app (yargsInput){
   } else if (yargsInput.read) {
     //code to list all Movies in Database
     console.log("Entering read");   // this is the more common method using for loop, could use .map method see below
-      const results = await MovieCollection.find({}); 
-      for (let index = 0; index < results.length; index++) {
-        const element = results[index];
-        console.log(`${element.title} Staring ${element.actor} Directed by ${element.director} Movie Rating ${element.rating}`);
-      } 
+    const results = await MovieCollection.find({}); 
+    for (let index = 0; index < results.length; index++) {
+      const element = results[index];
+      console.log(`${element.title} Staring ${element.actor} Directed by ${element.director} Movie Rating ${element.rating}`);
+    } 
 //as above but using .map method (more suited to react)
       // let modifiedArr = results.map((element) =>  
       //   console.log(`${element.title} With ${element.actor} Directed by ${element.director}`)
@@ -38,7 +38,6 @@ async function app (yargsInput){
       } else {
         console.log ("Update Failed!");
       }
-
 
   } else if (yargsInput.updateActor) {
     // code to update Movie Actor goes here
@@ -82,12 +81,12 @@ async function app (yargsInput){
     const results = await MovieCollection.find({[yargsInput.key]:{$regex: yargsInput.filter}})
       for (let index = 0; index < results.length; index++) {
         const element = results[index];
-            // if (element.title === yargsInput.filter) {
-              console.log(`Found The Movie "${element.title}" With "${element.actor}" Directed by "${element.director}" Rating ${element.rating}`);
-            // } else {
-            //   console.log("Something Wrong!");
-            // };          
-       } 
+        // if (element.title === yargsInput.filter) {
+        console.log(`Found The Movie "${element.title}" With "${element.actor}" Directed by "${element.director}" Rating ${element.rating}`);
+        // } else {
+        //   console.log("Something Wrong!");
+        // };          
+      } 
 
   } else if (yargsInput.delete) {
     // code to delete a movie will go here using deleteOne

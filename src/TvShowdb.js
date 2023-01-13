@@ -17,27 +17,27 @@ async function app (yargsInput){
   } else if (yargsInput.read) {
     //code to list all TV Shows in Database
     console.log("Entering read");   // this is the more common method using for loop, could use .map method see below
-      const results = await TvCollection.find({}); 
-      for (let index = 0; index < results.length; index++) {
-        const element = results[index];
-        console.log(`The TV Show "${element.tvshow}" Staring "${element.tvactor}" Directed by "${element.tvdirector}" TV Rating ${element.tvrating}`);
-      } 
-//as above but using .map method (more suited to react)
-      // let modifiedArr = results.map((element) =>  
-      //   console.log(`${element.tvshow} With ${element.tvactor} Directed by ${element.tvdirector} Rating ${element.tvrating}`);
-      //   );
+    const results = await TvCollection.find({}); 
+    for (let index = 0; index < results.length; index++) {
+      const element = results[index];
+      console.log(`The TV Show "${element.tvshow}" Staring "${element.tvactor}" Directed by "${element.tvdirector}" TV Rating ${element.tvrating}`);
+    } 
+  //as above but using .map method (more suited to react)
+  // let modifiedArr = results.map((element) =>  
+  //   console.log(`${element.tvshow} With ${element.tvactor} Directed by ${element.tvdirector} Rating ${element.tvrating}`);
+  // );
 
-    } else if (yargsInput.updateTvshow) {
-      // code to update TvShow Title goes here
-      console.log("Entering TvShow Update");
-      const myQuery = {tvshow: yargsInput.tvshow};
-      const myUpdate ={$set: {tvshow: yargsInput.newtvshow}};
-      const result = await TvCollection.updateOne(myQuery,myUpdate); // finds the title and updates the details using the objects myquery & myupdate
-      if (result.modifiedCount === 1) {
-          console.log ("Updated TvShow Title Successfully");
-        } else {
-          console.log ("Update Failed!");
-        }
+  } else if (yargsInput.updateTvshow) {
+    // code to update TvShow Title goes here
+    console.log("Entering TvShow Update");
+    const myQuery = {tvshow: yargsInput.tvshow};
+    const myUpdate ={$set: {tvshow: yargsInput.newtvshow}};
+    const result = await TvCollection.updateOne(myQuery,myUpdate); // finds the title and updates the details using the objects myquery & myupdate
+    if (result.modifiedCount === 1) {
+        console.log ("Updated TvShow Title Successfully");
+      } else {
+        console.log ("Update Failed!");
+      }
 
   } else if (yargsInput.updateActor) {
     // code to update TvShow Actor goes here
@@ -46,10 +46,10 @@ async function app (yargsInput){
     const myUpdate ={$set: { tvactor: yargsInput.tvactor}};
     const result = await TvCollection.updateOne(myQuery,myUpdate); // finds the title and updates the details using the objects myquery & myupdate
     if (result.modifiedCount === 1) {
-        console.log ("Updated TvShow Actor Successfully");
-      } else {
-        console.log ("Update Failed!");
-      }
+      console.log ("Updated TvShow Actor Successfully");
+    } else {
+      console.log ("Update Failed!");
+    }
 
   } else if (yargsInput.updateDirector) {
     // code to update the TvShow Director only in a movie use updateOne
@@ -58,7 +58,7 @@ async function app (yargsInput){
     const myUpdate ={$set: { tvdirector: yargsInput.tvdirector}};
     const result = await TvCollection.updateOne(myQuery,myUpdate); // finds the title and updates the details using the objects myquery & myupdate
     if (result.modifiedCount === 1) {
-        console.log ("Updated TvShow Director Successfully");
+      console.log ("Updated TvShow Director Successfully");
     } else {
         console.log ("Update Failed!");
     }  
@@ -81,12 +81,12 @@ async function app (yargsInput){
     const results = await TvCollection.find({[yargsInput.key]:{$regex: yargsInput.filter}})
       for (let index = 0; index < results.length; index++) {
         const element = results[index];
-            // if (element.tvshow === yargsInput.tvshow) {
-              console.log(`Found The TV Show "${element.tvshow}" With "${element.tvactor}" Directed by "${element.tvdirector}" Rating ${element.tvrating}`);
-            // } else {
-            //   console.log("Something Wrong");
-            // };          
-       }  
+        // if (element.tvshow === yargsInput.tvshow) {
+        console.log(`Found The TV Show "${element.tvshow}" With "${element.tvactor}" Directed by "${element.tvdirector}" Rating ${element.tvrating}`);
+        // } else {
+        //   console.log("Something Wrong");
+        // };          
+      }  
 
   } else if (yargsInput.delete) {
     // code to delete a movie will go here using deleteOne
